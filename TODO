@@ -1,0 +1,2 @@
+ * Produce a reasonable set of test vectors using proven XXTEA implementations
+ * Expose endianness as a user-configurable option
