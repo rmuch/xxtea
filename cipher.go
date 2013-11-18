@@ -77,7 +77,7 @@ func New(key []byte, blockSize int) (cipher.Block, error) {
 	}
 
 	// XXTEA supports arbitrary block sizes that are 64 bits or larger, and multiples of 32 bits.
-	if blockSize < 64 || (blockSize%32) != 0 {
+	if blockSize < 8 || (blockSize%4) != 0 {
 		return nil, BlockSizeError(blockSize)
 	}
 
