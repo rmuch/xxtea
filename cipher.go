@@ -70,7 +70,7 @@ func (x *_XXTEA) Decrypt(dst, src []byte) {
 // Argument blockSize should be a block size in bytes. XXTEA supports
 // arbitrarily-sized blocks that are at least 8 bytes long, with a length
 // that is a multiple of 4 bytes.
-func New(key []byte, blockSize int) (cipher.Block, error) {
+func NewCipher(key []byte, blockSize int) (cipher.Block, error) {
 	// XXTEA uses a 128 bit (16 byte) key size.
 	if len(key) != 16 {
 		return nil, KeySizeError(len(key))
