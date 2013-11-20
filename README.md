@@ -13,8 +13,9 @@ report "Tea extensions".
 Getting Started
 ---------------
 
-To use the package, add an import declaration for `github.com/rmuch/xxtea` to
-your source file.
+To use the package, make sure the `GOPATH` environment variable is correctly
+defined. Run the command `go get github.com/rmuch/xxtea`, then add an import
+declaration for `github.com/rmuch/xxtea` to your source file.
 
 Refer to the `godoc` documentation and package `crypto/cipher` for information
 on how to use this package.
