@@ -31,3 +31,24 @@ func TestKeySizeValidation(t *testing.T) {
 		}
 	}
 }
+
+func TestBlockSizeValidation(t *testing.T) {
+	key := []byte{0xd6, 0xb9, 0xd2, 0x6e, 0x4f, 0x90, 0x67, 0x43, 0x65, 0x8a, 0xa3, 0x98, 0xef, 0x26, 0x59, 0x70}
+
+	validBlockSizes := []int{8, 12, 16, 20, 24, 28, 32, 36, 40}
+	invalidBlockSizes := []int{4, 9, 13, 15, 17, 21, 27, 31, 37}
+
+	for _, bs := range validBlockSizes {
+		_, err := NewCipher(key, bs)
+		if err != nil {
+			t.Errorf("NewCipher() with valid block size %d failed", bs)
+		}
+	}
+
+	for _, bs := range invalidBlockSizes {
+		_, err := NewCipher(key, bs)
+		if err == nil {
+			t.Errorf("NewCipher() with invalid block size %d succeeded", bs)
+		}
+	}
+}
