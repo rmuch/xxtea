@@ -59,7 +59,7 @@ func mx(y, z, sum, e uint32, k []uint32, p uint32) uint32 {
 func encode(dst, src, key []uint32) {
 	// Initialize cipher parameters.
 	var n int32 = int32(len(src))
-	var v []uint32 = make([]uint32, n)
+	var v []uint32 = dst
 	var k []uint32 = key
 
 	// Copy src to buffer for in-place encoding.
@@ -86,16 +86,13 @@ func encode(dst, src, key []uint32) {
 		v[n-1] += mx(y, z, sum, e, k, p)
 		z = v[n-1]
 	}
-
-	// Copy in-place result to dst.
-	copy(dst, v)
 }
 
 // Decode a block using the XXTEA cipher.
 func decode(dst, src, key []uint32) {
 	// Initialize cipher parameters.
 	var n int32 = int32(len(src))
-	var v []uint32 = make([]uint32, n)
+	var v []uint32 = dst
 	var k []uint32 = key
 
 	// Copy src to buffer for in-place encoding.
@@ -122,7 +119,4 @@ func decode(dst, src, key []uint32) {
 
 		sum -= delta
 	}
-
-	// Copy in-place result to dst.
-	copy(dst, v)
 }
